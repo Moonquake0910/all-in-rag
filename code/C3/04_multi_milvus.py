@@ -44,7 +44,7 @@ def visualize_results(query_image_path: str, retrieved_images: list, img_height:
     query_cv = np.array(query_pil)[:, :, ::-1]
     resized_query = cv2.resize(query_cv, (img_width, img_height))
     bordered_query = cv2.copyMakeBorder(resized_query, 10, 10, 10, 10, cv2.BORDER_CONSTANT, value=(255, 0, 0))
-    query_display_area[img_height * (row_count - 1):, :] = cv2.resize(bordered_query, (img_width, img_height))
+    query_display_area[img_height:img_height * 2, :] = cv2.resize(bordered_query, (img_width, img_height))
     cv2.putText(query_display_area, "Query", (10, panoramic_height - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
 
     # 处理检索到的图像

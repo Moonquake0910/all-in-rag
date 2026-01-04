@@ -27,7 +27,7 @@ for sheet_name in xls.sheet_names:
     df = pd.read_excel(xls, sheet_name=sheet_name)
     
     # 为当前工作表（DataFrame）创建一个 PandasQueryEngine
-    query_engine = PandasQueryEngine(df=df, llm=Settings.llm, verbose=True)
+    query_engine = PandasQueryEngine(df=df, llm=Settings.llm, verbose=True, instruction_str="表格中只包含了特定年份的电影信息，不需要在电影名称中包含年份")
     
     # 为当前工作表创建一个摘要节点（IndexNode）
     year = sheet_name.replace('年份_', '')
